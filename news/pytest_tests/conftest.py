@@ -42,15 +42,17 @@ def news_list():
     # Получаем сегодняшнюю дату
     today = datetime.today()
     # Создаем список
-    news_list = News.objects.bulk_create(
+    all_news = [
         News(
             title=f'Новость {index}',
-            text='Бла-бла-бла.',
+            text='Просто текст.',
+            # Для каждой новости уменьшаем дату на index дней от today,
+            # где index - счетчик числа
             date=today - timedelta(days=index)
         )
         for index in range(settings.NEWS_COUNT_ON_HOME_PAGE + 1)
-    )
-    return news_list
+    ]
+    News.objects.bulk_create(all_news)
 
 
 @pytest.fixture
