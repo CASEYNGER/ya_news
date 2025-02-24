@@ -67,6 +67,12 @@ def comment(author, news):
 
 
 @pytest.fixture
+def new_comment():
+    """Новый текст комментария."""
+    return {'text': 'Новый текст'}
+
+
+@pytest.fixture
 def comment_list(author, news):
     """Создаем список комментариев."""
     # Получаем сегодняшнее время
