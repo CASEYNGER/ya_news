@@ -10,10 +10,7 @@ from news.forms import BAD_WORDS, WARNING
 from news.models import Comment
 
 
-# Метка, что все тесты требуют доступ к БД
-pytestmark = pytest.mark.django_db
-
-
+@pytest.mark.django_db
 def test_anonymous_user_cant_create_comment(client, new_comment, news):
     """Тест доступа для отправки комментария анонимного пользователя."""
     # Получаем адрес
